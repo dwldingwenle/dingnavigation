@@ -1,82 +1,95 @@
 <!DOCTYPE html>
-<html style="font-size: 40px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>米洛導航</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<meta content="telephone=no,email=no" name="format-detection">
-	<meta content="yes" name="apple-mobile-web-app-capable">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-touch-fullscreen" content="yes">
-	<meta name="keywords" content="米洛導航">
-	<meta name="description" content="一個簡單美觀的網址導航">
-	<link rel="stylesheet" type="text/css" href="./简约导航_files/style.min.css">
-	<link rel="stylesheet" type="text/css" href="./简约导航_files/yidong.min.css">
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>导航</title>
+<style>
+html, body{height:100%; width:100%; margin:0; padding:0;}
+body {line-height:1.5; font-family: 微软雅黑; background:-webkit-gradient(linear, left top, left bottom, from(#eee), to(#fff));}
+.nav {border:solid 1px #B8D4B8; margin-bottom:20px; border-radius: 5px; background-color: #fff;}
+.nav:hover {box-shadow: 0 5px 30px #999;}
+.nav h3 {margin:0; background-color:#836FFF; padding:5px 10px; font-weight:normal; font-size:16px;}
+.nav h3 i {font-style:normal; padding-left:10px; color:red;}
+.clear {clear:both; height:15px;}
+.nav a {float:left; width:150px; margin-top:15px; margin-left:10px; text-align:center; text-decoration: none;}
+.nav a:hover {text-decoration: none; color:red;}
+.nav a i {font-style:normal; color:#999; font-size:9px; position: relative; top:-10px; left:0px; padding:1px 3px;}
+</style>
+
+<script>
+$(function(){
+$('.nav a').each(function(){
+var href = $(this).attr('href');
+var count = window.localStorage.getItem(href);
+count = count || 0;
+$(this).append('<i>' + count + '</i>');
+$(this).attr('target', '_blank');
+$(this).click(function(){
+var count = parseInt($(this).find('i').html()) + 1;
+$(this).find('i').html(count);
+window.localStorage.setItem(href, count);
+console.log(count);
+});
+$(this).hover(function(){
+$(this).parents('.nav').find('h3 i').html($(this).attr('href'));
+}, function(){
+$(this).parents('.nav').find('h3 i').html('');
+});
+});
+});
+</script>
 </head>
-
 <body>
+<div style="max-width:1000px; margin:10px auto;">
 
-	<!-- 搜索栏start -->
-	<div class="baidu baidu-2">
-		<form name="f" action="https://www.google.com/search" target="_blank">
-			<div class="Select-box-2" id="baidu">
-				<ul style="height: 48px;">
-					<li class="this_s">Google</li>
-				</ul>
-			</div>
-			<div class="in5">
-				<input name="q" id="kw-2" maxlength="100" autocomplete="off" type="text">
-				<div class="qingkong" id="qingkong" title="清空">x</div>
-			</div>
-			<input value="搜 索" id="su-2" type="submit">
-		</form>
-		<ul class="keylist"></ul>
-	</div>
-	<!-- 搜索栏end -->
+<div class="nav">
+<h3>类别一 <i></i></h3>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
 
-	<!-- 内容start -->
-	<div class="body">
-		<div class="content">
-			<div class="jianjie">
-				<div class="jj-list">
-					<div class="jj-list-tit">學習 · 學校</div>
-					<ul class="jj-list-con _b">
-						<li><a href="http://heungto.edu.hk/" class="link-3" target="_blank" rel="nofollow">香島中學</a><div class="i_r_edit" onclick="zyd_edit(&#39;2&#39;);"></div></li>
-						<li><a href="http://eclass.heungto.edu.hk/" class="link-3" target="_blank" rel="nofollow">香島中學eClass</a><div class="i_r_edit" onclick="zyd_edit(&#39;3&#39;);"></div></li>
-						<li><a href="https://dictionary.cambridge.org/dictionary/english/" class="link-3" target="_blank" rel="nofollow">劍橋字典</a><div class="i_r_edit" onclick="zyd_edit(&#39;4&#39;);"></div></li>
-						<li><a href="https://www.diyifanwen.com/" class="link-3" target="_blank" rel="nofollow">第一範文網</a><div class="i_r_edit" onclick="zyd_edit(&#39;5&#39;);"></div></li>
-						<li><a href="https://resources.hkedcity.net/" class="link-3" target="_blank" rel="nofollow">教學資源庫</a><div class="i_r_edit" onclick="zyd_edit(&#39;6&#39;);"></div></li>
-						<li><a href="https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/" class="link-3" target="_blank" rel="nofollow">粵語審音配詞字庫</a><div class="i_r_edit" onclick="zyd_edit(&#39;7&#39;);"></div></li>
-					</ul>
-				</div>
-				<!-- 自定义按钮start -->
-				<div class="jj-list zdy_list" style="display: none;">
-					<div class="jj-list-tit">自定义</div>
-					<ul class="jj-list-con zdy_li">
-					</ul>
-				</div>
-				<!-- 自定义按钮end -->
-			</div>
-			<div style="text-align:center;color:white">
-				課程表
-				<img src="./20201001-20201201_HTMS_2020-2021_Timetable of 3B_(Half-time because of COVID-19).jpg" align="middle">
-			</div>
-			<!-- 内容end -->
+<div class="clear"></div>
+</div>
 
-			<!-- 底部版权start -->
-			<!-- 开源不易，请勿去除下方版权信息 -->
-			<!-- 如果您想修改下方版权信息，请打赏并留言您的网址 >> https://afdian.net/@appts -->
+<div class="nav">
+<h3>类别二 <i></i></h3>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<div class="clear"></div>
+</div>
 
-			<div style="text-align:center;color:#ffffff">
-				Copyright © 2021 米洛導航 改編自
-				<a href="https://www.appts.cn/" style="color:#ffffff;" target="_blank" rel="nofollow">软件探索 </a>
-				<a href="https://www.jianavi.com/" style="color:#ffffff;" target="_blank" rel="nofollow">簡約導航</a>
-			</div>
-		</div>
-		<!-- 底部版权end -->
-	</div>
+<div class="nav">
+<h3>类别三<i></i></h3>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<div class="clear"></div>
+</div>
 
-	<script src="./简约导航_files/hm.js.下載"></script><script type="text/javascript" src="./简约导航_files/jquery.min.js.下載"></script>
-	<script type="text/javascript" src="./简约导航_files/js.min.js.下載"></script>
-
-
-
-</body></html>
+</div>
+</body>
+</html>
